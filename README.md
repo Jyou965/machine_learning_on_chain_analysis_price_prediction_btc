@@ -1,4 +1,4 @@
-![chain](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/chain.png)
+![chain]()
 
 # Machine Learning On-Chain Analysis of Bitcoin Price
 
@@ -8,9 +8,7 @@
 
 In this project, we used three different machine learning models to identify key drivers of bitcoin prices and tested which model would yeild the most accurate results in predicting bitcoin prices. The models used were Perceptrons (Deep Learning), Random Forest Regressor (Ensemble Learning), and Lasso Regressor (Supervised Learning). 
 
-We used the on-chain analysis framework provided by [Ark Invest](https://ark-invest.com/articles/analyst-research/bitcoin-buyer-and-seller/) (the Ark Framework). 
-
-![Screen-Shot-2021-04-07-at-8 31 22-PM](https://user-images.githubusercontent.com/81061058/126056173-80aee8c4-4cdf-43c9-b756-e60ddbe00a2d.jpg)
+We used the on-chain analysis framework provided by [Ark Invest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/ark%20framework.png) (the Ark Framework). 
 
 We started with 27 on-chain metrics from Glassnode.com as well as the Fear & Greed Index from alternative.me and narrowed down the dimentions to 12, with ten years of daily history since 2011.
 
@@ -64,31 +62,30 @@ The API to Glassnode.com is hidden.  Users of this program need to set up their 
 
   Below is a diagram of the metrics in relation to the Ark Framework.  Those in black are the 12 features that remained.  Those in red got eliminated due to high correlation with other features.  Those in green got eliminated due to not having ten years of historical data.
 
-  ![features]()
+  ![features](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/features.png)
 
   The correlations among the remaining features are demonstrated in the following chart.
 
-  ![correlations]()
+  ![correlations](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/correlations.png)
   
   ### Phase Two: Building Machine Learning Models
   
   As mentioned above, we used Perceptrons, Random Forest Regressor, and Lasso Regressor to do the analysis. In this phase, we built the Lasso Regressor model to evaluate the coefficients of the 12 features.  The other two models are built in Phase Four.
 
-  ![lasso]()
-  ![lasso]()
+  ![lasso](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/lasso%20coefficients.png)
 
   ### Phase Three: FB Prophet 
   
   We used FB Prophet to predict the price range of each feature on a given day (in this case, 2022-01-13). Yhat, yhat lower & yhat upper are captured.  We then used Itertools to iterate all 532,441 (=3^12) combinations of feature possibilities using the three captured values for each feature.
 
-  ![FB]()
-  ![FB]()
+  ![FB](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/prophet%203%20lines.png)
+  ![FB](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/prophet%20full.png)
     
   ### Phase Four: Applying Machine Learning Models to Make BTC Price Predictions
   
   For this step, we applied each machine learning model using the feature_predictions dataframe. Random Forrest Regressor predictions are worth the most attention because it is the most accurate model among the three based on model scores and back-testing accuracy, which will be illustrated in the following section.
 
-  ![prediction]()
+  ![prediction](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/prediction.png)
 
 ---
 
@@ -104,22 +101,22 @@ The API to Glassnode.com is hidden.  Users of this program need to set up their 
 2. Model effectiveness and backtesting results: Random Forrest Regressor turned out to be the most accurate model among the three.
 
   Model scores:
-  [screenshots]
-  [screenshots]
-  [perceptronLayers]
-  [screenshots]
+  ![lassoScore](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/lasso%20scores.png)
+  ![rfScore](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/rf%20scores.png)
+  ![perceptronLayers](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/perceptrons%20layers.png)
+  ![perceptronScore](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/perceptrons%20score.png)
 
   Back-testing results:
-  [screenshots]
-  [screenshots]
-  [screenshots]
+  ![lassBacktest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/lasso%20backtesting.png)
+  ![rfBacktest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/rf%20backtesting.png)
+  ![perceptronsBacktest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/perceptrons%20backtesting.png)
 
 3. Key drivers of BTC prices:
 
   The following charts from Lasso Regressor and Random Forrest Regressor demonstrated that the top three drivers of BTC prices are Hash Rate, Circulating Supply and Transaction Volume, all of which fall into Network Health, the bottom level of the Ark Framework pyramid.  It also indicates that Network Effect is a bigger driver for BTC prices than stock-to-flow.
   
-  [lassocoefficient]
-  [rf_importance]
+  ![lassocoefficient](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/lasso%20coefficient.png)
+  ![rf_importance](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/rf%20importance.png)
 
   As mentioned earlier, the output by Lasso Regressor covers the 12 features manually selected.  When Lasso Regressor was given all 27 features to select from, it only kept hash rate.  Although the effectiveness of the model based on hash rate only was not as high, this response is well worth further research.
   
@@ -134,4 +131,4 @@ The API to Glassnode.com is hidden.  Users of this program need to set up their 
    - Incorporate features with shorter history.
    - Adapt the model for Etherem and DeFi protocols.
 
-For more information, please refer to [project_presentation.pdf]() in the repo.
+For more information, please refer to the [presentation](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/project_presentation.pdf) in the repo.
