@@ -97,43 +97,44 @@ The API to Glassnode.com is hidden.  Users of this program need to set up their 
 ## Key Decisions, Results and Findings
 
 1. During the process, we had three key strategic decisions to make:
-  A. To predict BTC prices or returns: We tried both and decided to predict prices due to more reasonable results.  
-
-  B. To use Lasso Regressor to select features or use correlations to manually select features:  We tried both.  Lasso Regressor singled out hash rate as the only feature to be used, which could be very insightful.  However, predictive results were not as good as using correlations to narrow down the number of features to 12.  As such, we chose the latter approach. But Lasso Regressor's initial selection of hash rate is well worth further investigation.
     
-  C. To use train_test_split or TimeSeriesSplit:  We tried both and decided to use train_test_split due to better predictive results.
+    A. To predict BTC prices or returns: We tried both and decided to predict prices due to more reasonable results.  
+
+    B. To use Lasso Regressor to select features or use correlations to manually select features:  We tried both.  Lasso Regressor singled out hash rate as the only feature to be used, which could be very insightful.  However, predictive results were not as good as using correlations to narrow down the number of features to 12.  As such, we chose the latter approach. But Lasso Regressor's initial selection of hash rate is well worth further investigation.
+    
+    C. To use train_test_split or TimeSeriesSplit:  We tried both and decided to use train_test_split due to better predictive results.
 
 2. Model effectiveness and backtesting results: Random Forrest Regressor turned out to be the most accurate model among the three.
 
-  Lasso Regressor Score:
+    Lasso Regressor Score:
 
-  ![lassoScore](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/lasso%20scores.png)
+    ![lassoScore](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/lasso%20scores.png)
 
-  Random Forrest Regressor Score:
+    Random Forrest Regressor Score:
 
-  ![rfScore](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/rf%20scores.png)
+    ![rfScore](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/rf%20scores.png)
 
-  Perceptrons Neural Network Design
+    Perceptrons Neural Network Design
 
-  ![perceptronLayers](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/perceptrons%20layers.png)
+    ![perceptronLayers](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/perceptrons%20layers.png)
 
-  Perceptrons Score:
+    Perceptrons Score:
 
-  ![perceptronScore](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/perceptrons%20score.png)
+    ![perceptronScore](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/perceptrons%20score.png)
 
   Back-testing results:
 
-  Lasso Regressor:
+    Lasso Regressor:
 
-  ![lassoBacktest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/lasso%20backtesting.png)
+    ![lassoBacktest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/lasso%20backtesting.png)
 
-  Random Forrest Regressor:
+    Random Forrest Regressor:
 
-  ![rfBacktest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/rf%20backtesting.png)
+    ![rfBacktest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/rf%20backtesting.png)
 
-  Perceptrons:
+    Perceptrons:
 
-  ![perceptronsBacktest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/perceptrons%20backtesting.png)
+    ![perceptronsBacktest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/perceptrons%20backtesting.png)
 
 3. Key drivers of BTC prices:
 
