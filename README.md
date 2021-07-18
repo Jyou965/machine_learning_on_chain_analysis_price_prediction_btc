@@ -1,51 +1,135 @@
-# Project Two: Machine Learning On-Chain Analysis to Predict Bitcoin Prices
+# Machine Learning On-Chain Analysis of Bitcoin Price Drivers
 
-__________________________________________________________________________
+---
 
-# Background
+## Background
 
-In this project, we used three different machine learning models to predict bitcoin prices and test which one would yeild the most accurate results. The models used were Perceptrons (Deep Learning), Random Forest (Ensemble Learning), and Lasso Regression (Supervised Learning). We attempted to account for all three levels of the On-Chain Analysis Framework (shown below) by focusing our analysis on features included in all levels. 
+In this project, we used three different machine learning models to identify key drivers of bitcoin prices and tested which model would yeild the most accurate results in predicting bitcoin prices. The models used were Perceptrons (Deep Learning), Random Forest Regressor (Ensemble Learning), and Lasso Regressor (Supervised Learning). 
+
+We used the on-chain analysis framework provided by [Ark Invest](https://ark-invest.com/articles/analyst-research/bitcoin-buyer-and-seller/) (the Ark Framework). 
 
 ![Screen-Shot-2021-04-07-at-8 31 22-PM](https://user-images.githubusercontent.com/81061058/126056173-80aee8c4-4cdf-43c9-b756-e60ddbe00a2d.jpg)
 
+We started with 27 on-chain metrics from Glassnode.com as well as the Fear & Greed Index from alternative.me and narrowed down the dimentions to 12, with ten years of daily history since 2011.
 
-__________________________________________________________________________
+---
 
-# Libraries and Setup 
+## Libraries and Dependancies
 
-We imported many of the libraries that are used often in class, like Pandas, but we added a few notable ones to perform the machine learning analysis. Lasso, Linear Regression, and Logistic Regression from the sklearn.linear_model were also included, and so were train_test_split and TimeSeriesSplit from the sklearn.model_selection library. A full list of the imported libraries is included in the first section of the main_code file. 
+* [json](https://docs.python.org/3/library/json.html?highlight=json#module-json) - stands for JavaScript Object Notation. It is a lightweight data interchange format inspired by JavaScript object literal syntax.
 
-After importing the required libraries, we imported and used the glassnode.com API key, making sure to define the coin as BTC. 
+* [requests](https://docs.python-requests.org/en/master/) - an elegant and simple HTTP library for Python, built for human beings.
 
+* [pandas](https://pandas.pydata.org/docs/) - an open source, BSD-licensed library providing high-performance, easy-to-use data structures and data analysis tools for the Python programming language.
 
-___________________________________________________________________________
+* [os](https://docs.python.org/3/library/os.html) - provides a portable way of using operating system dependent functionality.
 
-# Project Phases:
+* [dotenv](https://pypi.org/project/python-dotenv/) - reads key-value pairs from a .env file and can set them as environment variables.
+
+* [matplotlib](https://matplotlib.org/) - a comprehensive library for creating static, animated, and interactive visualizations in Python.
+
+* [hvplot](https://hvplot.holoviz.org/user_guide/Introduction.html) - provides a high-level plotting API built on HoloViews and Bokeh that provides a general and consistent API for plotting data in all the abovementioned formats.
+
+* [numpy](https://numpy.org/doc/stable/) - the fundamental package for scientific computing in Python. It is a Python library that provides a multidimensional array object, various derived objects (such as masked arrays and matrices), and an assortment of routines for fast operations on arrays, including mathematical, logical, shape manipulation, sorting, selecting, I/O, discrete Fourier transforms, basic linear algebra, basic statistical operations, random simulation and much more.
+
+* [scikit-learn](https://scikit-learn.org/stable/) - tools for predictive data analysis.
+
+* [TensorFlow](https://www.tensorflow.org/api_docs) - an end-to-end open source machine learning platform.
+
+* [keras](https://keras.io/guides/) - a Python deep learning API library that offers consistent & simple APIs, minimizes the number of user actions required for common use cases, and provides clear & actionable error messages. 
+
+* [fbprophet](https://facebook.github.io/prophet/) - a procedure for forecasting time series data based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. It works best with time series that have strong seasonal effects and several seasons of historical data.
+
+* [itertools](https://docs.python.org/3/library/itertools.html) - creates iterators for efficient looping.
+
+* [panel](https://panel.holoviz.org/) - https://panel.holoviz.org/ - an open-source Python library that lets you create custom interactive web apps and dashboards by connecting user-defined widgets to plots, images, tables, or text.
+
+* [datetime](https://docs.python.org/3/library/datetime.html) - supplies classes for manipulating dates and times.
+
+---
+
+## API
+
+The API to Glassnode.com is hidden.  Users of this program need to set up their own APIs.
+
+---
+
+## Project Phases:
   
-  ## Phase One: Cleaning Data, Correlation, Choosing Features for DataFrames
+  ### Phase One: Cleaning Data, Correlation, Choosing Features for DataFrames
   
-  By using the On-Chain Analysis Framework, we defined 27 features to further examine and build DataFrames for. We then used heat maps to illustrate correlation and deleted features that didn't have enough history. After cleaning, we were left with 12 features to create data frames for, with the hope that using the ML models with them would yeild the best results. 
+  By using the Ark Framework, we started with 27 features to further examine and build DataFrames for. We then used heat maps to illustrate correlations. Features that had high correlations with others and those that didn't have ten years of history were deleted. 12 features remained.  
+
+  Below is a diagram of the metrics in relation to the Ark Framework.  Those in black are the 12 features that remained.  Those in red got eliminated due to high correlation with other features.  Those in green got eliminated due to not having ten years of historical data.
+
+  ![features]()
+
+  The correlations among the remaining features are demonstrated in the following chart.
+
+  ![correlations]()
   
-  ## Phase Two: Building Machine Learning Models
+  ### Phase Two: Building Machine Learning Models
   
-  As mentioned above, we used Perceptrons, Random Forest, and Lasso Regression to do our analysis. We found three key features that seemed to have the most correlation with BTC price: Circulating Supply, Hash Rate, and Transaction Count. All three features fall into Network Health, the bottom level of the Bitcoin pyramid.
+  As mentioned above, we used Perceptrons, Random Forest Regressor, and Lasso Regressor to do the analysis. In this phase, we built the Lasso Regressor model to evaluate the coefficients of the 12 features.  The other two models are built in Phase Four.
+
+  ![lasso]()
+  ![lasso]()
+
+  ### Phase Three: FB Prophet 
   
-  ## Phase Three: FaceBook Prophet 
-  
-   Loaded FB Prophet into notebook by using "from fbprophet import Prophet". It created 532,441 combinations of feature possibilities.
+  We used FB Prophet to predict the price range of each feature on a given day (in this case, 2022-01-13). Yhat, yhat lower & yhat upper are captured.  We then used Itertools to iterate all 532,441 (=3^12) combinations of feature possibilities using the three captured values for each feature.
+
+  ![FB]()
+  ![FB]()
     
-  ## Phase Four: Applying Machine Learning Models 
+  ### Phase Four: Applying Machine Learning Models to Make BTC Price Predictions
   
-  For this step, we applied each machine learning model using the feature_predictions dataframe. We used train_test_split for Random Forest, and two hidden layers with Perceptrons.
+  For this step, we applied each machine learning model using the feature_predictions dataframe. Random Forrest Regressor predictions are worth the most attention because it is the most accurate model among the three based on model scores and back-testing accuracy, which will be illustrated in the following section.
 
+  ![prediction]()
 
-___________________________________________________________________________
+---
 
-# Results and Unexpected Findings
+## Key Decisions, Results and Findings
 
-After using and testing all three ML models, Random Forest was the most accurate when predicting bitcoin prices, while Lasso Regression seemed better for choosing features. We also found that the key drivers of BTC prices are activity levels, as indicated by our top three features. The accuracy of the results in general depended on the availability of historical data, the predictive capabilities of FB Prophet on future values, and the ML model selection and parameter setting. 
+1. During the process, we had three key strategic decisions to make:
+    A. To predict BTC prices or returns: We tried both and decided to predict prices due to more reasonable results.  
 
-  ## Unexpected Findings 
+    B. To use Lasso Regressor to select features or use correlations to manually select features:  We tried both.  Lasso Regressor singled out hash rate as the only feature to be used, which could be very insightful.  However, predictive results were not as good as using correlations to narrow down the number of features to 12.  As such, we chose the latter approach. But Lasso Regressor's initial selection of hash rate is well worth further investigation.
+    
+    C. To use train_test_split or TimeSeriesSplit:  We tried both and decided to use train_test_split due to better predictive results.
+
+2. Model effectiveness and backtesting results: Random Forrest Regressor turned out to be the most accurate model among the three.
+
+  Model scores:
+  [screenshots]
+  [screenshots]
+  [perceptronLayers]
+  [screenshots]
+
+  Back-testing results:
+  [screenshots]
+  [screenshots]
+  [screenshots]
+
+3. Key drivers of BTC prices:
+
+  The following charts from Lasso Regressor and Random Forrest Regressor demonstrated that the top three drivers of BTC prices are Hash Rate, Circulating Supply and Transaction Volume, all of which fall into Network Health, the bottom level of the Ark Framework pyramid.  It also indicates that Network Effect is a bigger driver for BTC prices than stock-to-flow.
   
-  The correlation between features change depending on how many are considered. Also, the Lasso Regresser only kept Hash Rate out of the 27 features considered! Picky thing
+  [lassocoefficient]
+  [rf_importance]
+
+  As mentioned earlier, the output by Lasso Regressor covers the 12 features manually selected.  When Lasso Regressor was given all 27 features to select from, it only kept hash rate.  Although the effectiveness of the model based on hash rate only was not as high, this response is well worth further research.
   
+---
+
+## Future Steps
+   The predictive capabilities of the models depend on the availability of historical data for features, the configuration of FB Prophet, the ML model selection and model parameter settings. The following steps can be done to further improve the predictive power of the models:
+   - Evaluate model selection or combination.
+   - Look into Lasso Regressor's preliminary selection of hash rate as the only factor.
+   - Examine how to get better results by predicting BTC returns instead of prices.
+   - Better understand how parameters impact model results (X, y split; y as price or return).
+   - Incorporate features with shorter history.
+   - Adapt the model for Etherem and DeFi protocols.
+
+For more information, please refer to [project_presentation.pdf]() in the repo.
