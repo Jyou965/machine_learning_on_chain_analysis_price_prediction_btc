@@ -1,4 +1,4 @@
-![chain]()
+![chain](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/chain.png)
 
 # Machine Learning On-Chain Analysis of Bitcoin Price
 
