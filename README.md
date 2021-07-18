@@ -28,4 +28,14 @@ ___________________________________________________________________________
   
   ## Phase Two: Building Machine Learning Models
   
-  As mentioned above, we used Perceptrons, Random Forest, and Lasso Regression to do our analysis. 
+  As mentioned above, we used Perceptrons, Random Forest, and Lasso Regression to do our analysis. We found three key features that seemed to have the most correlation with BTC price: Circulating Supply, Hash Rate, and Transaction Count. All three features fall into Network Health, the bottom level of the Bitcoin pyramid.
+  
+  ## Phase Three: FaceBook Prophet 
+  
+   Loaded FB Prophet into notebook by using "from fbprophet import Prophet". It created 532,441 combinations of feature possibilities.
+    
+  ## Phase Four: Applying Machine Learning Models 
+  
+  For this step, we applied each machine learning model using the feature_predictions dataframe. We used train_test_split for Random Forest, and two hidden layers with Perceptrons.
+  
+  
