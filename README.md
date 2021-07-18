@@ -124,15 +124,15 @@ The API to Glassnode.com is hidden.  Users of this program need to set up their 
 
   Back-testing results:
 
-    Lasso Regressor:
+  Lasso Regressor:
 
     ![lassoBacktest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/lasso%20backtesting.png)
 
-    Random Forrest Regressor:
+  Random Forrest Regressor:
 
     ![rfBacktest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/rf%20backtesting.png)
 
-    Perceptrons:
+  Perceptrons:
 
     ![perceptronsBacktest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/perceptrons%20backtesting.png)
 
