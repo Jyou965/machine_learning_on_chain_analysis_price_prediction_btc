@@ -1,4 +1,4 @@
-# Machine Learning On-Chain Analysis of Bitcoin Price Drivers
+# Machine Learning On-Chain Analysis of Bitcoin Price
 
 ---
 
