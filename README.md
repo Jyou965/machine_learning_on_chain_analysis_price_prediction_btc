@@ -37,5 +37,15 @@ ___________________________________________________________________________
   ## Phase Four: Applying Machine Learning Models 
   
   For this step, we applied each machine learning model using the feature_predictions dataframe. We used train_test_split for Random Forest, and two hidden layers with Perceptrons.
+
+
+___________________________________________________________________________
+
+# Results and Unexpected Findings
+
+After using and testing all three ML models, Random Forest was the most accurate when predicting bitcoin prices, while Lasso Regression seemed better for choosing features. We also found that the key drivers of BTC prices are activity levels, as indicated by our top three features. The accuracy of the results in general depended on the availability of historical data, the predictive capabilities of FB Prophet on future values, and the ML model selection and parameter setting. 
+
+  ## Unexpected Findings 
   
+  The correlation between features change depending on how many are considered. Also, the Lasso Regresser only kept Hash Rate out of the 27 features considered! Picky thing
   
