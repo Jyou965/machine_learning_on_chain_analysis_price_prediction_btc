@@ -12,7 +12,7 @@ We used the on-chain analysis framework provided by [Ark Invest](https://ark-inv
 
 ![arkFramework](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/ark%20framework.png)
 
-We started with 27 on-chain metrics from Glassnode.com as well as the Fear & Greed Index from alternative.me and narrowed down the dimentions to 12, with ten years of daily history since 2011.
+We started with 27 on-chain metrics from Glassnode.com as well as the Fear & Greed Index from alternative.me and narrowed down the dimensions to 12, with ten years of daily history since 2011.
 
 ---
 
