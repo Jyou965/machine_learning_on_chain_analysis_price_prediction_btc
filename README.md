@@ -162,5 +162,4 @@ For more information, please refer to the [presentation](https://github.com/Jyou
 ---
 
 ## Contributors
-Jackie You, Jamal Rizvi and Clare Collity
-with the support of FinTech Boot Camp Staff
+Jackie You, Jamal Rizvi and Clare Collity with the support of FinTech Boot Camp Staff
