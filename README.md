@@ -158,3 +158,9 @@ The API to Glassnode.com is hidden.  Users of this program need to set up their 
    - Adapt the model for Etherem and DeFi protocols.
 
 For more information, please refer to the [presentation](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/project_presentation.pdf) in the repo.
+
+---
+
+## Contributors
+Jackie You, Jamal Rizvi and Clare Collity
+with the support of FinTech Boot Camp Staff
