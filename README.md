@@ -62,7 +62,7 @@ The API to Glassnode is hidden.  Users of this program need to set up their own 
   
   Using the Ark Framework, we started with 27 features to further examine and build DataFrames. We then used heat maps to illustrate correlations. Features that had high correlations with others or those that didn't have ten years of history were deleted. 12 features remained.  
 
-  Below is a diagram of the metrics in relation to the Ark Framework.  Those in black font are the 12 features that remained.  Those in red font were eliminated due to high correlation with other features.  Those in green font got eliminated due to not having ten years of historical data.
+  Below is a diagram of the metrics in relation to the Ark Framework.  Those in black font are the 12 features that remained.  Those in red font were eliminated due to high correlation with other features.  Those in green font got eliminated due to not having ten years of historical data. See [Glossary]() for definitions of the terms.
 
   ![features](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/features.png)
 
@@ -162,4 +162,4 @@ For more information, please refer to the [presentation](https://github.com/Jyou
 ---
 
 ## Contributors
-Jackie You, Jamal Rizvi and Clare Collity with the support of FinTech Boot Camp Staff
+Jackie You, Jamal Rizvi and Clare Collity with the support of UC Berkeley FinTech Boot Camp Staff
