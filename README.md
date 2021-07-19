@@ -6,13 +6,13 @@
 
 ## Background
 
-In this project, we used three different machine learning models to identify key drivers of bitcoin prices and tested which model would yeild the most accurate results in predicting bitcoin prices. The models used were Perceptrons (Deep Learning), Random Forest Regressor (Ensemble Learning), and Lasso Regressor (Supervised Learning). 
+In this project, we used three different machine learning models to identify key drivers of bitcoin price and tested which model would yeild the most accurate results in predicting price. The models used were Perceptrons (Deep Learning), Random Forest Regressor (Ensemble Learning), and Lasso Regressor (Supervised Learning). 
 
 We used the on-chain analysis framework provided by [Ark Invest](https://ark-invest.com/articles/analyst-research/bitcoin-buyer-and-seller/) (the Ark Framework). 
 
 ![arkFramework](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/ark%20framework.png)
 
-We started with 27 on-chain metrics from Glassnode.com as well as the Fear & Greed Index from alternative.me and narrowed down the dimensions to 12, with ten years of daily history since 2011.
+We started with 27 on-chain metrics from Glassnode as well as the Fear & Greed Index from alternative.me and narrowed down the dimensions to 12, with ten years of daily history since 2011.
 
 ---
 
@@ -52,7 +52,7 @@ We started with 27 on-chain metrics from Glassnode.com as well as the Fear & Gre
 
 ## API
 
-The API to Glassnode.com is hidden.  Users of this program need to set up their own APIs.
+The API to Glassnode is hidden.  Users of this program need to set up their own APIs.
 
 ---
 
@@ -60,9 +60,9 @@ The API to Glassnode.com is hidden.  Users of this program need to set up their 
   
   ### Phase One: Cleaning Data, Correlation, Choosing Features for DataFrames
   
-  By using the Ark Framework, we started with 27 features to further examine and build DataFrames for. We then used heat maps to illustrate correlations. Features that had high correlations with others and those that didn't have ten years of history were deleted. 12 features remained.  
+  Using the Ark Framework, we started with 27 features to further examine and build DataFrames. We then used heat maps to illustrate correlations. Features that had high correlations with others or those that didn't have ten years of history were deleted. 12 features remained.  
 
-  Below is a diagram of the metrics in relation to the Ark Framework.  Those in black are the 12 features that remained.  Those in red got eliminated due to high correlation with other features.  Those in green got eliminated due to not having ten years of historical data.
+  Below is a diagram of the metrics in relation to the Ark Framework.  Those in black font are the 12 features that remained.  Those in red font were eliminated due to high correlation with other features.  Those in green font got eliminated due to not having ten years of historical data.
 
   ![features](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/features.png)
 
@@ -98,7 +98,7 @@ The API to Glassnode.com is hidden.  Users of this program need to set up their 
 
 1. During the process, we had three key strategic decisions to make:
     
-    A. To predict BTC prices or returns: We tried both and decided to predict prices due to more reasonable results.  
+    A. To predict BTC prices or to predict BTC returns: We tried both and decided to predict prices due to more reasonable results.  
 
     B. To use Lasso Regressor to select features or use correlations to manually select features:  We tried both.  Lasso Regressor singled out hash rate as the only feature to be used, which could be very insightful.  However, predictive results were not as good as using correlations to narrow down the number of features to 12.  As such, we chose the latter approach. But Lasso Regressor's initial selection of hash rate is well worth further investigation.
     
@@ -136,9 +136,9 @@ The API to Glassnode.com is hidden.  Users of this program need to set up their 
 
   ![perceptronsBacktest](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/perceptrons%20backtesting.png)
 
-3. Key drivers of BTC prices:
+3. Key drivers of BTC price:
 
-  The following charts from Lasso Regressor and Random Forrest Regressor demonstrated that the top three drivers of BTC prices are Hash Rate, Circulating Supply and Transaction Volume, all of which fall into Network Health, the bottom level of the Ark Framework pyramid.  It also indicates that Network Effect is a bigger driver for BTC prices than stock-to-flow.
+  The following charts from Lasso Regressor and Random Forrest Regressor demonstrated that the top three drivers of BTC prices are Hash Rate, Circulating Supply and Transaction Volume, all of which fall into Network Health, the bottom level of the Ark Framework pyramid.  It also indicates that Network Effect is a bigger driver for BTC price than stock-to-flow.
   
   ![lassocoefficient](https://github.com/Jyou965/machine_learning_price_prediction_btc/blob/main/supporting_files/screenshots/lasso%20coefficient.png)
 
